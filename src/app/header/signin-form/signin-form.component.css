@@ -1,0 +1,28 @@
+.signin{
+    background-color: #000;
+
+}
+form{
+    margin: 30px 5%;
+    background-color: #faf4d5;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+input,select{
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+span{
+    font-weight: 600;
+}
+
+.btndef{
+    background-color: #4cbb17;
+    color: #fff;
+    font-weight: 500;
+}
+.btndef:hover{
+    color: #022b0c;
+}

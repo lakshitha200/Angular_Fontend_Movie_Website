@@ -1,0 +1,31 @@
+<section class="popular pt-4">
+  <div class="my-container">
+      <h2 class="mb-4 mx-3">Popular</h2>
+      
+      <i class="fa-solid fa-angle-right movieBtns" (click)="nextSlide(1)"></i>
+
+      <owl-carousel-o [options]="customOptions" #caro1>
+          <ng-container  *ngFor="let movie of MoviesList">
+              <ng-container *ngIf="movie.category.includes('Popular')">
+                  <ng-template carouselSlide >
+                        <div class="slider-container">
+                          <div class="movie-img">
+                              <a [routerLink]="'Movie-details/' +movie.id+'/'+movie.name">
+                                  <img [src]="movie.img" alt="">
+                              </a>
+                          </div>
+                          <div class="simple-details mt-2 text-white text-center">
+                              <a [routerLink]="'Movie-details/' +movie.id+'/'+movie.name">
+                                  <p>{{movie.name}}</p>
+                              </a>
+                          </div>
+                        </div>
+                  </ng-template> 
+              </ng-container>
+          </ng-container>
+      </owl-carousel-o>
+
+      
+      <i class="fa-solid fa-angle-left movieBtns" (click)="prevSlide(1)"></i>
+  </div>
+</section>

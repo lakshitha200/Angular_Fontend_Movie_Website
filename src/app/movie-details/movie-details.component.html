@@ -1,0 +1,27 @@
+<div class="movie-details text-white" 
+    [ngStyle]="{'background-image':'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),url(' + selectedMovie.img2 + ')'}">
+    <div class="details-box">
+        <div class="details w-100">
+            <h3>{{selectedMovie.name}}</h3>
+            <p style="color: yellow;">{{ selectedMovie.category }}</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt eos dolore suscipit sequi quaerat laboriosam harum rem soluta! Libero quas numquam eligendi ut dolores vitae inventore, consequuntur debitis itaque soluta.</p>
+            
+            <p>Release Date: <span >{{ selectedMovie.releaseDate}}<br> 
+                                    Duration: {{selectedMovie.time}} <br>
+                                    <span class="d-flex">
+                                        <img src="../../assets/logo.png" alt="" style="width: 30px; height: 15px;margin-top: 4px;margin-right: 10px;">  
+                                        {{selectedMovie.rate}}/10
+                                    </span>
+            </span> 
+            </p>
+            <button class="btn btn-primary"><i class="fa-solid fa-play"></i> Watch Online</button>
+            <button class="btn btndef mx-2"><i class="fa-regular fa-circle-down"></i> Download</button>
+            
+            
+        </div>
+        <div class="movie-img 1-100 mt-4">
+            <img [src]="selectedMovie.img" alt="">
+        </div>
+    </div>
+    
+</div>

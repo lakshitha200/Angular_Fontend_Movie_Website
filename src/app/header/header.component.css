@@ -1,0 +1,96 @@
+body{
+    background-color: #000 !important;
+}
+.navbar{
+    background-color: #000;
+    
+}
+.navbar-brand img{
+    width: 100px;
+    height: 30px;
+}
+
+.nav-link, .navbar-brand{
+    color: #fff;
+}
+.nav-item{
+    margin-right: 2px;
+}
+.nav-item:hover{
+    border-bottom: 2px solid #4cbb17;
+}
+.link-active{
+    border-bottom: 2px solid #4cbb17;
+}
+
+.signin{
+    background-color: #4cbb17;
+    color: #fff;
+    font-weight: 500;
+    box-shadow: none !important;
+}
+.signin:hover{
+    color: #022b0c;
+}
+.dropdown-menu {
+    margin-left: -80px;
+}
+.dropdown-menu a:hover{
+    background-color: #4cbb17;
+    color: #fff;
+}
+.navbar-collapse{
+   text-align: center;
+
+}
+.navbar-toggler-icon{
+    color: #fff;
+}
+img{
+    height: 93vh;
+}
+
+/* Search */
+.search-box {
+    position: absolute;
+    right: 120px;
+    top: 10px;
+   
+}
+.btndef{
+    background-color: #4cbb17;
+    color: #fff;
+    font-weight: 500;
+}
+.btndef:hover{
+    color: #022b0c;
+}
+
+
+/* Responsive */
+@media screen and (max-width:575px){
+    .navbar-brand img{
+        width: 90px;
+        height: 25px;
+    }
+    .search-box {
+        position: absolute;
+        right: 80px;
+        top: 10px;
+       
+    }
+    .btndef i{
+        font-size: 15px;
+    }
+    .signin{
+        margin-top: 10px;
+    }
+    .collapse{
+        position: relative;
+    }
+    .dropdown-menu {
+       position: relative;
+       margin-left: 0px;
+    }
+}
+

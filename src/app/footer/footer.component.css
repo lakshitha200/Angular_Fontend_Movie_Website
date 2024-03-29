@@ -1,0 +1,49 @@
+
+footer{
+    background-color: #000;
+}
+
+
+/* contact */
+.contact{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 30px;
+    gap: 30px;
+}
+.contact-details{
+    width: 100%;
+}
+.contact-form{
+    width: 100%;
+}
+.contact .social-media{
+    display: flex;
+    font-size: 18px;
+    gap: 15px;
+    margin-top: 10px;
+}
+.contact .social-media :hover{
+   color: #4cbb17;
+   cursor: pointer;
+}
+.btndef{
+    background-color: #4cbb17;
+    color: #fff;
+    font-weight: 500;
+}
+.btndef:hover{
+    color: #022b0c;
+}
+
+
+
+@media screen and (max-width:550px) {
+    p{
+        font-size: 14px;
+    }
+    .contact{
+        flex-wrap: wrap;
+    }
+}

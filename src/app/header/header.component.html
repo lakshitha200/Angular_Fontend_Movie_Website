@@ -1,0 +1,37 @@
+<div class="header sticky-top">
+    <nav class="navbar navbar-expand-sm px-4">
+        <a class="navbar-brand" routerLink="Home"><img src="../../assets/logo.png" alt=""></a>
+        <!-- search -->
+        <div class="search-box">
+          <a class="btn btndef"  routerLink="Home/Search">
+              <i class="fa-solid fa-magnifying-glass text-white"></i>
+          </a>
+        </div>
+        <!-- -------- -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars text-white"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="Home" [routerLinkActive]="'link-active'">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="Movie"  [routerLinkActive]="'link-active'">Movies</a>
+            </li>
+          </ul>
+          <!-- Dropdown Signin btn -->
+          <div class="dropdown">
+            <button class="btn signin" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Sign Up
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><a class="dropdown-item" routerLink="Home/sign-in">Sign In</a></li>
+                <li><a class="dropdown-item" routerLink="Home/sign-up">Sign Up</a></li>
+            </ul>
+          </div>
+        </div>
+     
+      </nav> 
+</div>
+

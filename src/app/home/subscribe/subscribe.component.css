@@ -1,0 +1,13 @@
+.subscribe{
+    background-color: #000;
+}
+input{
+    width: 60%; 
+    height: 37px;
+    padding-left: 10px;
+}
+.btndef{
+    background-color: #4cbb17;
+    color: #fff;
+    font-weight: 500;
+}
