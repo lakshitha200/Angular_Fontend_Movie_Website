@@ -3,7 +3,25 @@
         <h2 class="mx-3">Subscriber Our Channel</h2>
         <div class="subscribe-box d-flex justify-content-center mt-5">
           <input type="email" name="email" placeholder="Enter Your Email">
-          <button class="btn btndef mx-2" >Subscribe</button>
+          <button class="btn btndef mx-2"  data-bs-toggle="modal" data-bs-target="#exampleModal">Subscribe</button>
         </div>
     </div>
 </section>
+
+<!-- Modal -->
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: #fff;">Alert</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: #000; background-color: #fff;"></button>
+      </div>
+      <div class="modal-body text-white">
+        Subscribe Feature Is Not Yet Available 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

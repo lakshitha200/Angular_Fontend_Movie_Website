@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MovieService } from '../../services/Movie.service';
-import { CarouselComponent, OwlOptions } from 'ngx-owl-carousel-o';
+import { Component, OnInit } from '@angular/core';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CarouselService } from '../../services/Carousel.service';
+import { MovieApiService } from '../../services/MovieAPi.service';
 
 @Component({
   selector: 'app-popular',
@@ -9,28 +9,33 @@ import { CarouselService } from '../../services/Carousel.service';
   styleUrl: './popular.component.css'
 })
 export class PopularComponent implements OnInit{
-  constructor(private movieService:MovieService,private carouselService:CarouselService){}
+  constructor(private movieApiService:MovieApiService,private carouselService:CarouselService){}
 
-  @ViewChild('caro1') caro1:CarouselComponent;
-  MoviesList = this.movieService.getMovies();
+  MoviesList:any[]=[];
+  Genre:any;
   customOptions:OwlOptions  = this.carouselService.customOptions;
+  isLoading = false;
 
-  nextSlide(cIndex:number){
-    if(cIndex==1){
-      this.caro1.next();
-    }
+
+  ngOnInit(): void {
+    this.isLoading = true;
+
+
+    this.movieApiService.fetchMovies().subscribe(data=>{
+        this.isLoading = false;
+        for(let i=0;i<data.length;i++){
+          for(let j=0;j<=19;j++){
+              this.MoviesList.push(data[i].results[j]);
+          }
+        }
+      // console.log(this.MoviesList)
+    });
+
+
+    this.movieApiService.getGenre().subscribe(data=>{
+      this.Genre = data.genres;
+      // console.log(this.Genre)
+    })
     
   }
-  prevSlide(cIndex:number){
-    if(cIndex==1){
-      this.caro1.prev();
-    }
-  }
-  ngOnInit(): void {
-    // console.log(this.customOptions)
-  }
-
-  
-
-  
 }

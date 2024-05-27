@@ -11,3 +11,12 @@ input{
     color: #fff;
     font-weight: 500;
 }
+
+.modal-dialog{
+    width: 80%;
+    padding: 0 10%;
+   
+}
+.modal-content{
+    border: 1px solid #fff;
+}

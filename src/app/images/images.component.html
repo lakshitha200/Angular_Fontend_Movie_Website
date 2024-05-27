@@ -1,0 +1,18 @@
+
+<div class="images py-3">
+    <div class="container">
+        <h3 class="mb-3">Images</h3>
+        <div class="imgList">
+            <ng-container  *ngFor="let image of postersList">
+                <img src="https://image.tmdb.org/t/p/w500{{image.file_path}}" alt="" (click)="getfullImage(image)" >
+            </ng-container>
+      
+        </div>
+    </div>
+    <div class="full-img" #fullImage>
+            <div class="image">
+                <i class="close-btn fa-solid fa-xmark" (click)="close()"></i>
+                <img [src]="url" >
+            </div>
+    </div>
+</div>

@@ -13,41 +13,15 @@
     object-position: center;
     z-index: -1;
 }
-.text {
-    z-index: 100;
-    position: absolute;
-    top: 35%;
-    left: 13%;
-    width: 600px;
-    white-space: wrap;
-    background-color: rgba(0, 0, 0, 0.3);
-    padding: 10px;
-    border-radius: 10px;
-}
-.text2 {
-    z-index: 100;
-    position: absolute;
-    top: 35%;
-    right: 13%;
-    width: 600px;
-    white-space: wrap;
-    background-color: rgba(0, 0, 0, 0.3);
-    padding: 10px;
-    border-radius: 10px;
-}
 
-
-.btndef{
-    background-color: #4cbb17;
-    color: #fff;
-    font-weight: 500;
-}
-.btndef:hover{
-    color: #022b0c;
-}
 .carousel-control-prev:hover,.carousel-control-next:hover{
-    color: black;
     background-color: #ffffff1e;
+}
+
+
+.carousel-indicators img{
+    width: 100px;
+    height: 100%;
 }
 
 @media screen and (max-width:915px) {
@@ -60,60 +34,24 @@
     }
 }
 @media screen and (max-width:790px) {
-    .text{
-        top: 30%;
-        left: 14%;
-        right: 14%;
-        width: 400px;
-    }
-    .text2{
-        top: 30%;
-        left: 14%;
-        right: 14%;
-        width: 400px;
-    }
-    .text h3{
-        font-size: 22px;
-    }
-    .text p{
-        font-size: 14px;
-    }
-    .text2 h3{
-        font-size: 22px;
-    }
-    .text2 p{
-        font-size: 14px;
-    }
-    .btndef{
-        font-size: 12px;
+ 
+    .carousel-indicators img{
+        width: 70px;
+        height: 100%;
+    
     }
 }
 @media screen and (max-width:525px) {
-    .text{
-        top: 20%;
-        left: 14%;
-        right: 14%;
-        width: 300px;
-    }
-    .text h3{
-        font-size: 18px;
-    }
-    .text p{
-        font-size: 12px;
-    }
-    .text2{
-        top: 20%;
-        left: 14%;
-        right: 14%;
-        width: 300px;
-    }
-    .text2 h3{
-        font-size: 18px;
-    }
-    .text2 p{
-        font-size: 12px;
-    }
-    .btndef{
-        font-size: 11px;
+ 
+    .carousel-indicators img{
+        width: 40px;
+        height: 100%;
+        opacity: 0.7;
     }
 }
+
+.carousel-indicators .active{
+    transform: scale(1.15);
+    opacity: 1;
+}
+

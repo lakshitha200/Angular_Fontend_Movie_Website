@@ -1,0 +1,38 @@
+<section class="upcomming pt-4">
+    <div class="my-container">
+        <h2 class="mb-4">UpComming Movies</h2>
+
+        <div class="d-flex gap-2">
+            <div class="details">
+                <p class="date">Dates -: <span>2024-01-29 to {{dates.maximum}}</span></p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo ea, adipisci modi possimus eligendi debitis sunt rerum libero, laudantium, doloremque eius dignissimos culpa voluptatum? Temporibus reiciendis eos eaque architecto quibusdam?</p>
+                <div class="text-center" style="background-color: black;">
+                    <a class="btn btndef btn-sm" routerLink="/Movie">More Categories <i class="fa-solid fa-angles-right"></i></a>
+                </div>
+            </div>
+            <div class="images">
+                 
+                <owl-carousel-o [options]="customOptions">
+                    <ng-container *ngFor="let movie of MovieList">
+                        <ng-template carouselSlide >
+                        
+                            <div class="slider-container">
+                                <div class="movie-img">
+                                    <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" alt="">
+                                </div>
+                                <div class="simple-details mt-2 text-white text-center">
+                                    <p>Release Date <br> {{movie.release_date}}</p>
+                                </div>
+                            </div>
+                            
+                        </ng-template> 
+                    </ng-container>
+                    
+                </owl-carousel-o>
+            </div>
+        </div>
+        
+  
+
+    </div>
+</section>

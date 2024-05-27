@@ -26,3 +26,11 @@ span{
 .btndef:hover{
     color: #022b0c;
 }
+
+.modal-dialog{
+    width: 80%;
+    padding: 0 10%;
+}
+.modal-content{
+    border: 1px solid #fff;
+}

@@ -1,0 +1,93 @@
+
+.upcomming{
+    background-color: #000000;
+    color: #fff;
+}
+
+.my-container{
+margin: 0 5%;
+position: relative;
+}
+
+.details{
+    width: 50%;
+}
+.images{
+    width: 50%;
+}
+
+.movie-img{
+    width: 100%;
+    height: 232px;
+    display: flex;
+    justify-content: center;
+}
+
+.movie-img img{
+    width: 155px;
+    height: 232px;
+    transition: .4s;
+    z-index: 10;
+}
+
+.btndef{
+    background-color: #4cbb17;
+    color: #fff;
+    font-weight: 500;
+}
+.btndef:hover{
+    color: #022b0c;
+}
+
+owl-carousel-o {
+    position: relative;
+  }
+  
+  .upcomming::ng-deep .owl-prev, .upcomming::ng-deep .owl-next {
+    position:absolute;
+    top: 14%;
+    background-color:transparent !important;
+    font-size: 30px ;
+    padding: 50px 10px !important;
+  }
+
+@media screen and (max-width:569px) {
+    .details p{
+        font-size: 14px;
+    }
+    .date{
+        font-size: 12px !important;
+    }
+    .simple-details{
+        font-size: 14px;
+    }
+}
+@media screen and (max-width:555px) {
+    .upcomming::ng-deep .owl-prev, .upcomming::ng-deep .owl-next {
+        top: 15% !important;
+        background-color:transparent !important;
+        font-size: 25px ;
+        padding: 50px 10px !important;
+      }
+}
+@media screen and (max-width:440px) {
+    .details p{
+        font-size: 12px;
+    }
+
+    .date span{
+        display: block;
+    }
+}
+@media screen and (max-width:335px) {
+    .details p{
+        font-size: 11px;
+    }
+    .date{
+        font-size: 11px !important;
+    }
+
+    .date span{
+        display: block;
+    }
+}

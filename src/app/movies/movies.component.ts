@@ -1,7 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
-import { MovieService } from '../services/Movie.service';
+import { Component} from '@angular/core';
 import { CarouselService } from '../services/Carousel.service';
-import { CarouselComponent, OwlOptions } from 'ngx-owl-carousel-o';
+import { OwlOptions } from 'ngx-owl-carousel-o';
+import { MovieApiService } from '../services/MovieAPi.service';
 
 @Component({
   selector: 'app-movies',
@@ -9,71 +9,40 @@ import { CarouselComponent, OwlOptions } from 'ngx-owl-carousel-o';
   styleUrl: './movies.component.css'
 })
 export class MoviesComponent {
-  constructor(private movieService:MovieService,private carouselService:CarouselService){}
+  constructor(private carouselService:CarouselService,private movieApiService:MovieApiService){}
 
-  @ViewChild('caro1') caro1:CarouselComponent;
-  @ViewChild('caro2') caro2:CarouselComponent;
-  @ViewChild('caro3') caro3:CarouselComponent;
-  @ViewChild('caro4') caro4:CarouselComponent;
-  @ViewChild('caro5') caro5:CarouselComponent;
-  @ViewChild('caro6') caro6:CarouselComponent;
-  @ViewChild('caro7') caro7:CarouselComponent;
+  MoviesList:any[]=[];
+  isLoading = false;   isLoading2 = true;
+  Genre:any;
 
-
-  MoviesList = this.movieService.getMovies();
-  
   customOptions:OwlOptions  = this.carouselService.customOptions;
-  
-  nextSlide(cIndex:number){
-    if(cIndex==1){
-      this.caro1.next();
-    }
-    if(cIndex==2){
-      this.caro2.next();
-    }
-    if(cIndex==3){
-      this.caro3.next();
-    }
-    if(cIndex==4){
-      this.caro4.next();
-    }
-    if(cIndex==5){
-      this.caro5.next();
-    }
-    if(cIndex==6){
-      this.caro6.next();
-    }
-    if(cIndex==7){
-      this.caro7.next();
-    }
-    
-  }
-  prevSlide(cIndex:number){
-    if(cIndex==1){
-      this.caro1.prev();
-    }
-    if(cIndex==2){
-      this.caro2.prev();
-    }
-    if(cIndex==3){
-      this.caro3.prev();
-    }
-    if(cIndex==4){
-      this.caro4.prev();
-    }
-    if(cIndex==5){
-      this.caro5.prev();
-    }
-    if(cIndex==6){
-      this.caro6.prev();
-    }
-    if(cIndex==7){
-      this.caro7.prev();
-    }
-  }
+
 
   ngOnInit(): void {
+    this.isLoading = true;
+    this.movieApiService.fetchMovies().subscribe(data=>{
+      this.isLoading2 = false;
+      this.isLoading = false;
+      for(let i=0;i<data.length;i++){
+        // console.log(data[i].results)
+      
+        for(let j=0;j<=19;j++){
+            this.MoviesList.push(data[i].results[j]);
+        }
+      }
+      // console.log(this.MoviesList)
+    });
+
+    this.movieApiService.getGenre().subscribe(data=>{
+      
+      this.Genre = data.genres;
+      // console.log(this.Genre)
+    })
+
+
 
   }
+
+
 
 }

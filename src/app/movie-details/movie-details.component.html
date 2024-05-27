@@ -1,27 +1,168 @@
 <div class="movie-details text-white" 
-    [ngStyle]="{'background-image':'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),url(' + selectedMovie.img2 + ')'}">
+    [ngStyle]="{'background-image':'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),url(' + imgurl+selectedMovie.backdrop_path + ')'}">
+    <div class="text-center sprinner pt-2" *ngIf="isLoading4">
+        <div class="spinner-border text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        </div>
     <div class="details-box">
-        <div class="details w-100">
-            <h3>{{selectedMovie.name}}</h3>
+        <div class="details">
+            <h3>{{selectedMovie.original_title}}</h3>
             <p style="color: yellow;">{{ selectedMovie.category }}</p>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt eos dolore suscipit sequi quaerat laboriosam harum rem soluta! Libero quas numquam eligendi ut dolores vitae inventore, consequuntur debitis itaque soluta.</p>
+            <p>{{selectedMovie.overview}}</p>
             
-            <p>Release Date: <span >{{ selectedMovie.releaseDate}}<br> 
-                                    Duration: {{selectedMovie.time}} <br>
-                                    <span class="d-flex">
-                                        <img src="../../assets/logo.png" alt="" style="width: 30px; height: 15px;margin-top: 4px;margin-right: 10px;">  
-                                        {{selectedMovie.rate}}/10
+            <p>Release Date: <span >{{ selectedMovie.release_date}}<br> 
+                                    <span class="d-flex align-items-center gap-2">
+                                        <i class="fa-solid fa-star" style="color: #4cbb17;"></i> 
+                                        {{selectedMovie.vote_average}}/10 ({{selectedMovie.vote_count}} voted)
                                     </span>
             </span> 
             </p>
-            <button class="btn btn-primary"><i class="fa-solid fa-play"></i> Watch Online</button>
-            <button class="btn btndef mx-2"><i class="fa-regular fa-circle-down"></i> Download</button>
+            <button class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#exampleModal1"><i class="fa-solid fa-play"></i> Watch Online</button>
+            <button class="btn btndef mx-2"  data-bs-toggle="modal" data-bs-target="#exampleModal2"><i class="fa-regular fa-circle-down"></i> Download</button>
             
             
         </div>
-        <div class="movie-img 1-100 mt-4">
-            <img [src]="selectedMovie.img" alt="">
+        <div class="movie-backimg mt-4">
+            <img src="https://image.tmdb.org/t/p/w500{{selectedMovie.poster_path}}" alt="">
         </div>
     </div>
-    
+
+
 </div>
+
+<div class="videos">
+    <div class="my-container">
+        <h4>Videos and Clips</h4>
+        <div class="text-center sprinner" *ngIf="isLoading1">
+            <div class="spinner-border text-light" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        <div class="video-box w-100 d-flex gap-1">
+           
+
+            <iframe class="trailor" [src]="Trailor" allow="accelerometer;encrypted-media;gyroscope" #traiolr>
+            </iframe>
+        
+            <div class="videoR1">
+                
+                <iframe *ngIf="Teaser1" [src]="Teaser2">
+                    
+                </iframe>
+                <iframe  *ngIf="Teaser2" [src]="Teaser2">
+                   
+                </iframe>
+            </div>
+            <div class="videoR2" *ngIf="Teaser3">
+                <iframe   [src]="Teaser3" *ngIf="Teaser3"></iframe>
+                <iframe  [src]="Teaser4" *ngIf="Teaser4"></iframe>
+            </div>
+        </div>
+ 
+    </div>
+</div>
+
+<div class="gallery ">
+    <div class="my-container">
+        <h3 class="pb-3">Images</h3>
+        <div class="text-center sprinner" *ngIf="isLoading2">
+            <div class="spinner-border text-light" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        <div class="images-box">
+            <div class="first-img">
+                <img src="https://image.tmdb.org/t/p/w500{{postersList[0].file_path}}" (click)="getfullImage(postersList[0])">
+            </div>
+            <div class="second-img-box">
+                <div class="second-img">
+                    <img src="https://image.tmdb.org/t/p/w500{{postersList[1].file_path}}" (click)="getfullImage(postersList[1])">
+                    <img src="https://image.tmdb.org/t/p/w500{{postersList[2].file_path}}" (click)="getfullImage(postersList[2])">
+                </div>
+                <div class="more-images d-flex justify-content-center align-items-center w-100">
+                    <a class="btn btndef" routerLink="./images">More Images</a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<div class="full-img" #fullImage>
+    <div class="image">
+        <i class="close-btn fa-solid fa-xmark" (click)="close()"></i>
+        <img [src]="fullImageUrl" >
+    </div>
+</div>
+
+
+<div class="similar">
+    <div class="my-container">
+        <h2 class="mb-4 mx-3">Related Movies</h2>
+        <div class="text-center sprinner" *ngIf="isLoading3">
+          <div class="spinner-border text-light" role="status">
+              <span class="visually-hidden">Loading...</span>
+          </div>
+          </div>
+  
+        <owl-carousel-o [options]="customOptions">
+          <ng-container  *ngFor="let movie of MoviesList">
+              <ng-container *ngIf="movie.genre_ids.includes(selectedMovie.genre_ids[0]) || movie.genre_ids.includes(selectedMovie.genre_ids[1]) || movie.genre_ids.includes(10749)">
+                  <ng-template carouselSlide >
+                      <div class="slider-container">
+                          <div class="movie-img">
+                              <a (click)="navigate(movie.id,movie.title)">
+                                  <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" alt="">
+                              </a>
+                          </div>
+                          <div class="simple-details mt-2 text-white text-center">
+                              <a (click)="navigate(movie.id,movie.title)">
+                                  <p>{{movie.title}}</p>
+                              </a>
+                          </div>
+                      </div>
+                  </ng-template> 
+              </ng-container>
+          </ng-container>
+      </owl-carousel-o>
+      
+    </div>
+</div>
+
+
+
+
+<div class="modal fade " id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel" style="color: #fff;">Alert</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: #000; background-color: #fff;"></button>
+        </div>
+        <div class="modal-body text-white">
+          Watch Online Feature Is Not Yet Available 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+<div class="modal fade " id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel" style="color: #fff;">Alert</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: #000; background-color: #fff;"></button>
+        </div>
+        <div class="modal-body text-white">
+          Download Feature Is Not Yet Available 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

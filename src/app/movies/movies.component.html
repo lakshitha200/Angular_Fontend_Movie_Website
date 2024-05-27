@@ -1,234 +1,47 @@
-<!-- 1-Popular -->
-<section class="popular pt-4">
-        <div class="my-container">
-            <h2 class="mb-4 mx-4">Popular</h2>
-        
-            <i class="fa-solid fa-angle-right movieBtns" (click)="nextSlide(1)"></i>
 
-            <owl-carousel-o [options]="customOptions" #caro1 style="background-color: aliceblue;">
-                <ng-container  *ngFor="let movie of MoviesList">
-                    <ng-container *ngIf="movie.category.includes('Popular')">
-                        <ng-template carouselSlide >
-                            <div class="slider-container">
-                                <div class="movie-img">
-                                    <a [routerLink]="'Movie-details/' +movie.id+'/'+movie.name">
-                                        <img [src]="movie.img" alt="">
-                                    </a>
-                                </div>
-                                <div class="simple-details mt-2 text-white text-center">
-                                    <a [routerLink]="'Movie-details/' +movie.id+'/'+movie.name">
-                                        <p>{{movie.name}}</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </ng-template> 
-                    </ng-container>
-                </ng-container>
-            </owl-carousel-o>
-
-            
-            <i class="fa-solid fa-angle-left movieBtns" (click)="prevSlide(1)"></i>
+<div class="movies">
+    <div class="text-center sprinner pt-2">
+        <div class="spinner-border text-light" role="status"  *ngIf="isLoading2">
+            <span class="visually-hidden">Loading...</span>
         </div>
-        
-
-</section>
-
-<!-- 7-Upcomming -->
-<section class="upcomming pt-4">
-    <div class="my-container">
-        <h2 class="mb-4 mx-4">Upcomming</h2>
-        
-        <i class="fa-solid fa-angle-right movieBtns" (click)="nextSlide(7)"></i>
-
-        <owl-carousel-o [options]="customOptions" #caro7>
-            <ng-container  *ngFor="let movie of MoviesList">
-                <ng-container *ngIf="movie.category.includes('Upcomming')">
-                    <ng-template carouselSlide >
-                        <div class="slider-container">
-                            <div class="movie-img">
-                                <a [routerLink]="'Movie-details/' +movie.id+'/'+movie.name">
-                                    <img [src]="movie.img" alt="">
-                                </a>
-                            </div>
-                            <div class="simple-details mt-2 text-white text-center">
-                                <a [routerLink]="'Movie-details/' +movie.id+'/'+movie.name">
-                                    <p>{{movie.name}}</p>
-                                </a>
-                            </div>
+        </div>
+    <ng-container *ngFor="let g of Genre">
+        <ng-container *ngIf="g.id != 99 && g.id != 10770 && g.id != 37">
+            <div class=" pt-2">
+                <div class="my-container">
+                    <h2 class="mb-4 mx-4">{{g.name}}</h2>
+                   <div class="text-center sprinner" *ngIf="isLoading">
+                        <div class="spinner-border text-light" role="status">
+                            <span class="visually-hidden">Loading...</span>
                         </div>
-                    </ng-template> 
-                </ng-container>
-            </ng-container>
-        </owl-carousel-o>
-
+                    </div>
+                   
+                    <owl-carousel-o [options]="customOptions">
+                        <ng-container  *ngFor="let movie of MoviesList">
+                            <ng-container *ngIf="movie.genre_ids.includes(g.id)">
+                                <ng-template carouselSlide >
+                                    
+                                    <div class="slider-container">
+                                        <div class="movie-img">
+                                            <a [routerLink]="'Movie-details/' +movie.id+'/'+movie.title">
+                                                <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="simple-details mt-2 text-white text-center">
+                                            <a [routerLink]="'Movie-details/' +movie.id+'/'+movie.name">
+                                                <p>{{movie.title}}</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </ng-template> 
         
-        <i class="fa-solid fa-angle-left movieBtns" (click)="prevSlide(7)"></i>
-    </div>
-</section>
-
-<!-- 2-Action -->
-<section class="action pt-4">
-    <div class="my-container">
-        
-        <h2 class="mb-4 mx-4">Action</h2>
-        
-        <i class="fa-solid fa-angle-right movieBtns" (click)="nextSlide(2)"></i>
-        <owl-carousel-o [options]="customOptions" #caro2>
-            <ng-container  *ngFor="let movie of MoviesList">
-                <ng-container *ngIf="movie.category.includes('Action')">
-                    <ng-template carouselSlide >
-                        <div class="slider-container">
-                            <div class="movie-img">
-                                <a [routerLink]="'Movie-details/' +movie.id+'/'+movie.name">
-                                    <img [src]="movie.img" alt="">
-                                </a>
-                            </div>
-                            <div class="simple-details mt-2 text-white text-center">
-                                <a [routerLink]="'Movie-details/' +movie.id+'/'+movie.name">
-                                    <p>{{movie.name}}</p>
-                                </a>
-                            </div>
-                        </div>
-                    </ng-template> 
-                </ng-container>
-            </ng-container>
-        </owl-carousel-o>
-
-        <i class="fa-solid fa-angle-left movieBtns" (click)="prevSlide(2)"></i>
-    </div>
-
-</section>
-
-
-<!--3-Adventure -->
-<section class="adventure pt-4">
-
-    <div class="my-container">
-        <h2 class="mb-4 mx-4">Adventure</h2>
-        
-        <i class="fa-solid fa-angle-right movieBtns" (click)="nextSlide(3)"></i>
-
-        <owl-carousel-o [options]="customOptions" #caro3>
-            <ng-container  *ngFor="let movie of MoviesList">
-                <ng-container *ngIf="movie.category.includes('Adventure')">
-                    <ng-template carouselSlide >
-                        <div class="slider-container">
-                            <div class="movie-img">
-                                <a [routerLink]="'Movie-details/' +movie.id+'/'+movie.name">
-                                    <img [src]="movie.img" alt="">
-                                </a>
-                            </div>
-                            <div class="simple-details mt-2 text-white text-center">
-                                <a [routerLink]="'Movie-details/' +movie.id+'/'+movie.name">
-                                    <p>{{movie.name}}</p>
-                                </a>
-                            </div>
-                        </div>
-                    </ng-template> 
-                </ng-container>
-            </ng-container>
-        </owl-carousel-o>
-
-        <i class="fa-solid fa-angle-left movieBtns" (click)="prevSlide(3)"></i>
-    </div>
-
-</section>
-
-<!--4-Fantasy -->
-<section class="fantasy pt-4">
-    <div class="my-container">
-        <h2 class="mb-4 mx-4">Fantasy</h2>
-        
-        <i class="fa-solid fa-angle-right movieBtns" (click)="nextSlide(4)"></i>
-
-        <owl-carousel-o [options]="customOptions" #caro4>
-            <ng-container  *ngFor="let movie of MoviesList">
-                <ng-container *ngIf="movie.category.includes('Fantasy')">
-                    <ng-template carouselSlide >
-                        <div class="slider-container">
-                            <div class="movie-img">
-                                <a [routerLink]="'Movie-details/' +movie.id+'/'+movie.name">
-                                    <img [src]="movie.img" alt="">
-                                </a>
-                            </div>
-                            <div class="simple-details mt-2 text-white text-center">
-                                <a [routerLink]="'Movie-details/' +movie.id+'/'+movie.name">
-                                    <p>{{movie.name}}</p>
-                                </a>
-                            </div>
-                        </div>
-                    </ng-template> 
-                </ng-container>
-            </ng-container>
-        </owl-carousel-o>
-
-        <i class="fa-solid fa-angle-left movieBtns" (click)="prevSlide(4)"></i>
-    </div>
-</section>
-
-
-<!--5- Comedy -->
-<section class="comedy pt-4">
-    <div class="my-container">
-        <h2 class="mb-4 mx-4">Comedy</h2>
-        
-        <i class="fa-solid fa-angle-right movieBtns" (click)="nextSlide(5)"></i>
-
-        <owl-carousel-o [options]="customOptions" #caro5>
-            <ng-container  *ngFor="let movie of MoviesList">
-                <ng-container *ngIf="movie.category.includes('Comedy')">
-                    <ng-template carouselSlide >
-                        <div class="slider-container">
-                            <div class="movie-img">
-                                <a [routerLink]="'Movie-details/' +movie.id+'/'+movie.name">
-                                    <img [src]="movie.img" alt="">
-                                </a>
-                            </div>
-                            <div class="simple-details mt-2 text-white text-center">
-                                <a [routerLink]="'Movie-details/' +movie.id+'/'+movie.name">
-                                    <p>{{movie.name}}</p>
-                                </a>
-                            </div>
-                        </div>
-                    </ng-template> 
-                </ng-container>
-            </ng-container>
-        </owl-carousel-o>
-
-        <i class="fa-solid fa-angle-left movieBtns" (click)="prevSlide(5)"></i>
-    </div>
-</section>
-
-<!-- 6-Animation -->
-<section class="animation pt-4">
-    <div class="my-container">
-        <h2 class="mb-4 mx-4">Animation</h2>
-        
-        <i class="fa-solid fa-angle-right movieBtns" (click)="nextSlide(6)"></i>
-
-        <owl-carousel-o [options]="customOptions" #caro6>
-            <ng-container  *ngFor="let movie of MoviesList">
-                <ng-container *ngIf="movie.category.includes('Animation')">
-                    <ng-template carouselSlide >
-                        <div class="slider-container">
-                            <div class="movie-img">
-                                <a [routerLink]="'Movie-details/' +movie.id+'/'+movie.name">
-                                    <img [src]="movie.img" alt="">
-                                </a>
-                            </div>
-                            <div class="simple-details mt-2 text-white text-center">
-                                <a [routerLink]="'Movie-details/' +movie.id+'/'+movie.name">
-                                    <p>{{movie.name}}</p>
-                                </a>
-                            </div>
-                        </div>
-                    </ng-template> 
-                </ng-container>
-            </ng-container>
-        </owl-carousel-o>
-
-        
-        <i class="fa-solid fa-angle-left movieBtns" (click)="prevSlide(6)"></i>
-    </div>
-</section>
-
+                            </ng-container>
+                        </ng-container>
+                    </owl-carousel-o>
+            
+                </div>
+            </div>
+        </ng-container>
+       
+    </ng-container>
+</div>

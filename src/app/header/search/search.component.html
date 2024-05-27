@@ -7,46 +7,39 @@
         </div>
 
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search Movies" aria-label="Recipient's username" 
+            <input type="text" class="form-control" placeholder="Search Filter Available SOON" aria-label="Recipient's username" 
             aria-describedby="basic-addon2" #searchValue>
             <div class="input-group-append">
-              <button class="btn btn-outline-success" type="button" (click)="getSearchValue(searchValue)">Search</button>
+              <button class="btn btn-outline-success" type="button">Search</button>
             </div>
         </div>
     </div>
 
     <div class="filter-btns container">
-        <button class="btn btn-outline-light rounded-pill btn-sm" 
-            (click)="getMovieCategory(Upcomming)">Upcomming</button>
-        <button class="btn btn-outline-light rounded-pill btn-sm"
-            (click)="getMovieCategory(Popular)">Popular</button>
-        <button class="btn btn-outline-light rounded-pill btn-sm" 
-            (click)="getMovieCategory(Action)">Action</button>
-        <button class="btn btn-outline-light rounded-pill btn-sm"
-            (click)="getMovieCategory(Adventure)">Adventure</button>
-        <button class="btn btn-outline-light rounded-pill btn-sm" 
-            (click)="getMovieCategory(Fantasy)">Fantasy</button>
-        <button class="btn btn-outline-light rounded-pill btn-sm"
-            (click)="getMovieCategory(Comedy)">Comedy</button>
-        <button class="btn btn-outline-light rounded-pill btn-sm"
-            (click)="getMovieCategory(Animation)">Animation</button>
+        <div *ngFor="let c of Genre">
+            <button class="btn btn-outline-light rounded-pill btn-sm" (click)="getMovieCategory(c.id)" 
+               [ngClass]="{'active':c.id == selectedButton}">{{c.name}}</button>
+        </div>
     </div>
     
-
     <div class="movie-filter container">
         <div class="movie-list mt-4">
 
-            <h4 class="text-white text-center" *ngIf="filteredMoviesList.length == 0"><u>Sorry, no movies found for this query!</u></h4>
-            <ng-container  *ngFor="let movie of filteredMoviesList">
-               
+            <!-- <h4 class="text-white text-center" *ngIf="filteredMoviesList.length == 0"><u>Sorry, no movies found for this query!</u></h4> -->
+            <ng-container  *ngFor="let movie of filteredMoviesList" >
+                <div class="text-center sprinner" *ngIf="isLoading"> 
+                    <div class="spinner-border text-light" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
                 <div class="movie-card">
-                    <a [routerLink]="'Movie-details/' +movie.id+'/'+movie.name">
+                    <a [routerLink]="'Movie-details/' +movie.id+'/'+movie.title">
                         <div>
-                            <img [src]="movie.img" alt="">
+                            <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" alt="">
                             
                         </div>
                         <div class="simple-details mt-2 text-white text-center">
-                            <p>{{movie.name}}</p>
+                            <p>{{movie.title}}</p>
                         </div>
                     </a>
                 </div>

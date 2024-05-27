@@ -1,6 +1,6 @@
 <div class="signup py-1">
     <div class="container">
-        <form action="">
+        <form>
             <h3 class="mt-4 text-center">Sign Up</h3>
             <div class="form-group">
                 <span>Name</span>
@@ -565,7 +565,7 @@
               </div>
     
               <div class="mt-3">
-                <button class="btn btndef">Sign Up</button>
+                <button class="btn btndef" data-bs-toggle="modal" data-bs-target="#exampleModal">Sign Up</button>
                 <button class="btn btn-danger mx-2" type="reset">Clear</button>
               </div>
             
@@ -574,3 +574,20 @@
     </div>
 </div>
 
+
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: #fff;">Alert</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="color: #000; background-color: #fff;"></button>
+      </div>
+      <div class="modal-body text-white">
+        Sign Up Feature Is Not Yet Available 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
