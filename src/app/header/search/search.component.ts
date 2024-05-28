@@ -12,6 +12,7 @@ export class SearchComponent implements OnInit{
   Genre:any[]=[];
   filteredMoviesList:any[]=[];
   selectedButton:any;
+  searchValue:string ='';
 
   constructor(private movieApiService:MovieApiService){}
 
@@ -24,6 +25,7 @@ export class SearchComponent implements OnInit{
             this.MoviesList.push(data[i].results[j]);
         }
       }
+     
       // console.log(this.MoviesList)
     });
 
@@ -34,28 +36,6 @@ export class SearchComponent implements OnInit{
 
   }
 
-  // selectedMoviesId:number[];
-
-
-  
-  
-  // getSearchValue(inputEl:HTMLInputElement){
-  //   this.getMovieCategory("clear");
-  //   // console.log(inputEl.value);
-  
-  //   // set searched Movies ids
-  //   this.searchService.setSearchedMoviesId(inputEl);
-    
-  //   // get searched movies Ids
-  //   // this.selectedMoviesId = this.searchService.getSearchedMoviesId();
-  //   // console.log(this.selectedMoviesId);
-
-  //   //get Filtered movies according to Ids
-  //   this.filteredMoviesList = this.searchService.getFiltereddMoviesList();
-  //   console.log(this.filteredMoviesList);
-
-    
-  // }
 
 
   getMovieCategory(id:any,){

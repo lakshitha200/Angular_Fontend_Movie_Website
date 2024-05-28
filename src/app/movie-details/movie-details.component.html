@@ -14,7 +14,7 @@
             <p>Release Date: <span >{{ selectedMovie.release_date}}<br> 
                                     <span class="d-flex align-items-center gap-2">
                                         <i class="fa-solid fa-star" style="color: #4cbb17;"></i> 
-                                        {{selectedMovie.vote_average}}/10 ({{selectedMovie.vote_count}} voted)
+                                        {{selectedMovie.vote_average | number:'1.1-2'}}/10 ({{selectedMovie.vote_count}} voted)
                                     </span>
             </span> 
             </p>

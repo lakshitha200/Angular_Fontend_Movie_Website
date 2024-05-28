@@ -21,6 +21,7 @@ import { ImagesComponent } from './images/images.component';
 import { UpcommingComponent } from './home/upcomming/upcomming.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
+import { FilterPipe } from './Pipes/FIlter.pipe';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { FormsModule } from '@angular/forms';
     MoviesComponent,
     SubscribeComponent,
     ImagesComponent,
+    FilterPipe
 
   ],
   imports: [

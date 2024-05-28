@@ -7,22 +7,48 @@
         </div>
 
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search Filter Available SOON" aria-label="Recipient's username" 
-            aria-describedby="basic-addon2" #searchValue>
+            <input type="search" class="form-control" placeholder="Search Movies" [(ngModel)]="searchValue" >
             <div class="input-group-append">
               <button class="btn btn-outline-success" type="button">Search</button>
+            </div>
+            <div class="searchedMovies" *ngIf="searchValue">
+                <div class="moviesList" >
+                    <ng-container *ngFor="let movie of MoviesList | filter:searchValue">
+                        <div class="movies" [routerLink]="'Movie-details/' +movie.id+'/'+movie.title">
+                            <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" alt="">
+                            <div class="movie-details">
+                                    <div class="d1">
+                                        <p style="font-weight: 500;">{{movie.title}}</p>
+                                        <p>{{movie.release_date}}</p>
+                                        <!-- <div *ngFor="let g of Genre" class="g">
+                                            <ng-container *ngIf="movie.genre_ids.includes(g.id)">
+                                                {{g.name}}
+                                            </ng-container>
+                                        </div> -->
+                                       
+                                    </div>
+                        
+                                    <div class="d2">
+                                        <p><i class="fa-solid fa-star" style="color: #4cbb17;"></i> {{movie.vote_average | number:'1.1-2'}}</p>
+                                    </div>
+                            
+                            </div>
+                        </div>
+                    </ng-container>
+                    
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="filter-btns container">
+    <div class="filter-btns container" *ngIf="!searchValue">
         <div *ngFor="let c of Genre">
             <button class="btn btn-outline-light rounded-pill btn-sm" (click)="getMovieCategory(c.id)" 
                [ngClass]="{'active':c.id == selectedButton}">{{c.name}}</button>
         </div>
     </div>
     
-    <div class="movie-filter container">
+    <div class="movie-filter container" *ngIf="!searchValue">
         <div class="movie-list mt-4">
 
             <!-- <h4 class="text-white text-center" *ngIf="filteredMoviesList.length == 0"><u>Sorry, no movies found for this query!</u></h4> -->

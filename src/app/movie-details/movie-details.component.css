@@ -38,6 +38,9 @@ button{
     background-color: #000;
     color: #fff;
 }
+.modal-dialog{
+
+}
 
 @media screen and (max-width:910px) {
     
@@ -404,13 +407,15 @@ iframe{
 }
 
 .modal-dialog{
-    width: 80%;
-   
+    width: 100%;
+
+}
+.modal-content{
+    margin: 20px;
 }
 .modal-content{
     border: 1px solid #fff;
 }
-
 
 
 /* FUll Images */

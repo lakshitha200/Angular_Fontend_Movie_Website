@@ -28,8 +28,11 @@ span{
 }
 
 .modal-dialog{
-    width: 80%;
-    padding: 0 10%;
+    width: 100%;
+
+}
+.modal-content{
+    margin: 20px;
 }
 .modal-content{
     border: 1px solid #fff;
